@@ -1,0 +1,1 @@
+<?php $this->load->view('user/template/safe_widget');?>

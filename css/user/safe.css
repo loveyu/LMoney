@@ -1,0 +1,39 @@
+/* CSS Document */
+
+#safe-widget {
+	font-size:18px;
+	margin:15px 15px 15px -250px;
+	width:220px;
+	float:left;
+}
+#safe-widget ul{
+	list-style-type:none;
+	margin:10px;
+}
+#safe-widget li{
+	margin-top:10px;
+	margin-bottom:10px;
+	padding:5px;
+	background-color:#F2B7C5;
+	border: 2px solid #770606;
+}
+
+#safe-widget .active{
+	margin-top:20px;
+	padding:5px;
+	background-color:#ACEFFD;
+	border: 2px solid #770606;
+}
+
+#safe{
+	 overflow:hidden;
+	 padding-left:250px;
+}
+#safe .safe-page{
+	border: 1px solid #1B633F;
+	background-color:#AB8DD3;
+	width:100%;
+	margin:20px 15px 15px -250px;
+	float:right;
+	padding:20px 0px 20px 0px;
+}
