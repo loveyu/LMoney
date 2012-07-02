@@ -1,0 +1,132 @@
+/* CSS Document */
+
+@charset "utf-8";
+* {
+	margin: 0;
+	padding:0;
+}
+
+html,body{
+	margin:0 30px 0 30px;
+	height: 100%;
+	background-color:#F0FDF4;
+}
+h1{
+	font-size:42px;
+}
+a{
+	text-decoration: none;	
+}
+a:link,a:visited{
+	color:#C30;
+}
+a:active,a:hover{
+	color:#A948EA;
+}
+#header{
+	height:auto;
+	width:auto;
+	background-color:#F389A2;
+	padding:10px;
+	overflow:hidden;
+}
+
+#header a{
+	text-decoration:none;
+}
+#header a:link,#header a:visited{
+	color:#C20A74;
+}
+#header a:active,#header a:hover{
+	color:#C86AB3;
+}
+#header ul{
+	list-style:none;
+}
+#header .title{
+	float:left;
+}
+
+#header .user{
+	float:right;
+	width:auto;
+	height:50px;
+	padding:1px;
+	padding:2px;
+}
+#header .user .avata{
+	width:48px;
+	height:48px;
+	border: 1px solid #000;		
+}
+
+#header .user .info li{
+	height:20px;
+	margin:1px;
+	padding:1px;
+	font-size:17px;
+}
+
+#wrap{
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -52px;
+	background-color: #E4C6F4;
+}
+
+#menu{
+	width:auto;
+	height:auto;
+	background-color:#D5AFDE;
+}
+#menu a{
+	text-decoration:none;
+}
+#menu a:link,#menu a:visited{
+	color:#333;
+}
+#menu a:active,#menu a:hover{
+	color:#EBDDF0;
+}
+#menu li {
+	float:left;
+	background-color:#E0A2E6;
+	font-size:20px;
+	margin:4px 0px 4px 30px;
+	padding:6px;
+	border: 1px solid #C63;
+}
+#menu li:active,#menu li:hover {
+	float:left;
+	background-color:#C2A5E0;
+	font-size:22px;
+	margin:4px 0px 4px 25px;
+	padding:5px;
+	border: 1px solid #C63;
+	font-weight: bold;
+}
+#menu ul {
+	list-style-type:none;
+	overflow:hidden;
+	clear:both;
+}
+
+
+#content {
+}
+.push{
+	height:52px;
+}
+#footer{
+	width:auto;
+	padding:10px 5px 10px 5px;
+	background-color:#BCDDB0;
+}
+#footer .color{
+	background-color:#B4DDEF;
+	width:auto;
+	height:20px;
+	padding:5px;
+	border: 1px solid #5CC9A3;
+}
