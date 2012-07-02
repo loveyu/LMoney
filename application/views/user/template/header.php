@@ -20,8 +20,8 @@
 <div id="header">
 	<h1 class="title"><a href="<?=site_url("user")?>">LMoney-user</a></h1>
 	
-	<table border="0" align="center" cellpadding="0" cellspacing="0" class="user"><tbody><tr>
-		<td><img src="<?=get_user_avata()?>" class="avata"></td>
+	<table class="user"><tbody><tr>
+		<td><img src="<?=get_user_avata()?>" class="avata" alt="avata" ></td>
 		<td>
 			<ul class="info">
 				<li><?=get_user_name('<strong class="username">','</strong>')?></li>
