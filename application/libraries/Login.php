@@ -151,8 +151,7 @@ class Login{
 		//不存在，设置cookie 更新数据库 判断是否为同一天 调用其他操作函数
 		if(!get_cookie('lg_status')){
 			set_cookie(array('name'=>'lg_status', 'value'=>1, 'expire'=>'0'));
-			$this->CI->db->where('id', $this->user_info->id);
-			$this->CI->db->update('aq', array('last_login_time'=>date('Y-m-d H:i:s'),'last_login_ip'=>$this->CI->input->ip_address()));
+			$this->CI->db->insert('user_login', array('user'=>$this->user_info->id,'ip'=>$this->CI->input->ip_address(),'ua'=>$_SERVER['HTTP_USER_AGENT']));
 		}		
 	}
 	public function login_errors($before='',$end=''){

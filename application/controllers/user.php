@@ -13,6 +13,7 @@ class user extends CI_Controller {
 		
 		$data=array('title'=>'用户','meta'=>array(),'link_tag'=>array());
 		$this->load->view('user/template/header',$data);
+		$this->load->view('user/template/menu');
 		$this->load->view('user/index');
 		$this->load->view('user/template/footer');
 	}
@@ -41,7 +42,15 @@ class user extends CI_Controller {
 		
         
 		$this->load->library(array('register','form_validation','session'));
-		$data=array('title'=>'用户注册','meta'=>array(),'link_tag'=>array(array('href' => 'css/register.css','rel' => 'stylesheet','type' => 'text/css')),'close'=>$this->system->register_close(),'status'=>FALSE);
+		$data=array(
+					'title'=>'用户注册',
+					'meta'=>array(),
+					'link_tag'=>array(
+									array('href' => 'css/user/register.css','rel' => 'stylesheet','type' => 'text/css')
+									),
+					'close'=>$this->system->register_close(),
+					'status'=>FALSE
+				);
 		
 		if($this->input->post() && !$data['close'])
 		{

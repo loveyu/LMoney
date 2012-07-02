@@ -52,7 +52,7 @@ if($this->input->get('loggedout')=='true')echo '<div class="loggeout">您已经�
 	</div>
 	<div class="login_button">
 		<?=form_button(array('content' => '登录', 'type' => 'submit'))?>
-		<?=form_hidden('login[redirect_to]',urldecode($this->input->get('redirect_to')))?>
+		<?=form_hidden('login[redirect_to]',($this->input->get('redirect')=='true')?$_SERVER['HTTP_REFERER']:urldecode($this->input->get('redirect_to')))?>
 		<div style="clear:both;"></div>
 	</div>
 

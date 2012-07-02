@@ -7,7 +7,7 @@
 
 <title><?=$title,' - ',sitename();?></title>
 <?=meta($meta);?>
-<?=link_tag(array('href' => 'css/common.css','rel' => 'stylesheet','type' => 'text/css'));?>
+<?=link_tag(array('href' => 'css/user/common.css','rel' => 'stylesheet','type' => 'text/css'));?>
 
 <?php foreach($link_tag as $v)echo link_tag($v);unset($v);?>
 
@@ -18,7 +18,17 @@
 <div id="wrap">
 
 <div id="header">
-	<h1 class="title"><a href="<?=site_url()?>">LMoney</a></h1>
+	<h1 class="title"><a href="<?=site_url("user")?>">LMoney-user</a></h1>
+	
+	<table border="0" align="center" cellpadding="0" cellspacing="0" class="user"><tbody><tr>
+		<td><img src="<?=get_user_avata()?>" class="avata"></td>
+		<td>
+			<ul class="info">
+				<li><?=get_user_name('<strong class="username">','</strong>')?></li>
+				<li><?=get_logout_link(true)?></li>
+			</ul>
+		</td>
+	</tr></tbody></table>
 </div>
 
 <div id="content">
