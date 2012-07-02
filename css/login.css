@@ -1,0 +1,138 @@
+/* CSS Document */
+
+body{
+	background-color:#FFDAD7;
+}
+#title{
+	width:auto;
+	font-size:36px;
+	margin:20px auto 10px auto;
+	padding:5px;
+}
+#title a{
+	color:#EC756F;
+	text-decoration:none;
+}
+h1{
+	text-align:center;
+}
+#login{
+	width:500px;
+	height:auto;
+	background-color:#E4AFB4;
+	padding:15px 15px 5px 15px;
+	margin:5px auto auto auto;
+	border: 1px solid #F77C79;
+}
+
+.login_error{
+	margin:0px;
+	padding:3px 20px 3px 25px;
+	color:#F00;
+	background-color:#F9E6DD;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #C9BA03;
+}
+.loggeout{
+	margin:0px 0px 5px 0px;
+	padding:3px 20px 3px 25px;
+	color:#36C;
+	background-color:#F3D1C0;
+	font-size:20px;
+}
+#login_table{
+	width:100%;
+	background-color:#FDDBE1;
+	padding:0px;
+	margin: 10px 0px 5px 0px;
+	border: 1px solid #F09DF4;
+}
+
+.login_box {
+	padding:5px;
+	margin: 10px 20px 5px 20px ;	
+}
+.login_box ul {
+	list-style:none;
+	margin:5px;
+	padding:2px;
+}
+
+.login_box li{
+	margin:5px 0px 5px 0px;
+	padding:2px;
+}
+.login_box label{
+	font-size:24px;
+	color:#F06;
+	font-weight: bolder;
+	font-variant: small-caps;
+	text-transform: uppercase;
+}
+.login_box input {
+	width:350px;
+	height:28px;
+	float:right;
+	color:#BD8BF3;
+	font-size:23px;
+	padding-top:3px;
+	padding-bottom:2px;
+	background-color:#F9F1EC;
+	border: 1px solid #DF8771;
+}
+
+.login_status{
+	padding: 0px;
+	margin: 5px 30px 5px 30px;
+}
+.login_status input {
+	float:left;
+}
+.login_status label {
+	color:#036;
+	font-size:19px;
+	float:left;
+	margin-left:10px;
+}
+.login_status a{
+	float:right;
+	margin-right:25px;
+	font-size:18px;
+	text-decoration: none;
+	font-style: italic;
+}
+
+.login_status a:link,.login_status a:visited{
+	color:#C30;
+}
+.login_status a:active,.login_status a:hover{
+	color:#F3C;
+}
+
+.login_button{
+	margin:2px 30px 5px 30px;
+	padding:2px;
+}
+.login_button button{
+	width:auto;
+	height:auto;
+	padding:2px 6px 2px 6px;
+	font-size:20px;
+	margin:2px 10px 2px 20px;
+	float:right;
+	background-color:#EED7D2;
+	color:#966;
+	font-weight: bolder;
+	border: 2px solid #F88FAE;
+}
+
+#help{
+	margin:2px;
+	padding:4px;
+}
+#help a{
+	color:#DE54DE;
+	text-decoration: none;
+	margin-right:10px;
+}

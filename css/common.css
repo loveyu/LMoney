@@ -1,0 +1,65 @@
+/* CSS Document */
+
+@charset "utf-8";
+* {
+	margin: 0;
+	padding:0;
+}
+
+html,body{
+	height: 100%;
+	background-color:#F0FDF4;
+}
+h1{
+	font-size:42px;
+}
+a{
+	text-decoration: none;	
+}
+a:link,a:visited{
+	color:#C30;
+}
+a:active,a:hover{
+	color:#A948EA;
+}
+#header{
+	height:auto;
+	width:auto;
+	background-color:#F389A2;
+	padding:10px;
+}
+
+#header a{
+	text-decoration:none;
+}
+#header a:link,#header a:visited{
+	color:#C20A74;
+}
+#header a:active,#header a:hover{
+	color:#C86AB3;
+}
+
+#wrap{
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -52px;
+	background-color: #E4C6F4;
+}
+#content {
+}
+.push{
+	height:52px;
+}
+#footer{
+	width:auto;
+	padding:10px 5px 10px 5px;
+	background-color:#BCDDB0;
+}
+#footer .color{
+	background-color:#B4DDEF;
+	width:auto;
+	height:20px;
+	padding:5px;
+	border: 1px solid #5CC9A3;
+}
