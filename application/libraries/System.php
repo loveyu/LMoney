@@ -6,9 +6,11 @@ class System{
 	private $db_config;
 	private $CI;
 	private $err_info;
+	private $menu_id;
 	public function __construct(){
 		$this->error_info=array();
 		$this->db_config=array();
+		$this->menu_id=array();
 		$this->CI=& get_instance();
 		$this->get_config();
 	}
@@ -24,6 +26,19 @@ class System{
 	}
 	public function register_close(){
 		return $this->db_config['register_close']['value']=='TRUE';
+	}
+	public function set_menu_id($s1='',$s2=''){
+		if($s1!=''){
+			$this->menu_id[0]=$s1;
+			$this->menu_id[1]='';
+		}
+		if($s2!='' && isset($this->menu_id[0]) && $this->menu_id[0]!=''){
+			$this->menu_id[1]=$s2;
+		}
+	}
+	public function get_menu_id($id=0){
+		if($id>=0)return $this->menu_id[$id];
+		else return '';
 	}
 }
 ?>

@@ -46,4 +46,14 @@ if ( ! function_exists('is_login'))
 	}
 }
 
+if ( ! function_exists('get_menu_active'))
+{
+	function get_menu_active($s='',$id=0)
+	{
+		if(get_instance()->system->get_menu_id($id)==$s)echo ' class="active"';
+	}
+}
+
+
+
 ?>
