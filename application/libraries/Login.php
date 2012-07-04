@@ -136,7 +136,7 @@ class Login{
 	}
 	private function sql_checking_sid(){
 		if($this->is_login)return TRUE;
-		$this->CI->db->select('id, user, email, password,lock');
+		$this->CI->db->select('id, user, email, password,lock,active');
 		$this->user_info=$this->CI->db->get_where('user',array('id'=>$this->cookie_info['sid']['id']))->first_row();
 		if(empty($this->user_info) ||$this->user_info->lock=='TRUE' )return FALSE;
 		if($this->user_info->password!=make_password($this->cookie_info['sid']['pwd'],TRUE))return FALSE;
