@@ -126,18 +126,24 @@ class user extends CI_Controller {
 		$this->load->view('user/safe');
 		$this->load->view('user/template/footer');
 	}
-	public function active(){
+	public function active($act='',$code=''){
 		if(!$this->login->auto_login())$this->login->redirect_to_login();
 		$this->system->set_menu_id('safe','active');
 		$data=array('title'=>'账户激活',
-					'meta'=>array(),
-					'link_tag'=>array(
-									array('href' => 'css/user/safe.css',
-											'rel' => 'stylesheet',
-											'type' => 'text/css'
-											)
+			'meta'=>array(),
+			'link_tag'=>array(
+							array('href' => 'css/user/safe.css',
+									'rel' => 'stylesheet',
+									'type' => 'text/css'
 									)
-					);
+							)
+		);
+		if($act=='send_mail')
+		{
+			$data['mail_sent']=FALSE;
+		}else if($act=='V' && $code!=''){
+			$data['verification']=TRUE;
+		}
 		$this->load->view('user/template/header',$data);
 		$this->load->view('user/template/menu');
 		$this->load->view('user/active');
