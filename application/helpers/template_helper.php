@@ -38,6 +38,32 @@ if ( ! function_exists('get_logout_link'))
 	}
 }
 
+if ( ! function_exists('get_user_email'))
+{
+	function get_user_email($all=false)
+	{
+		$email=get_instance()->login->user_info->email;
+		if($all)
+			return $email;
+		else
+		{
+			
+			$a=strpos($email,'@');
+			$d=strrpos($email,'.');
+			$dl='';
+			for($i=$a+1;$i<$d-1;$i++)$dl.='*';
+			if($a/2>2)
+			{
+				$al='';
+				for($i=$a/2+1;$i<$a;$i++)$al.='*';
+				return substr($email,0,$a/2+1).$al."@".$dl.substr($email,$d-1);
+			}
+			else 
+				return substr($email,0,$a)."@".$dl.substr($email,$d-1);
+		}
+	}
+}
+
 if ( ! function_exists('is_login'))
 {
 	function is_login()
