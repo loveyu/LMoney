@@ -110,6 +110,7 @@ class user extends CI_Controller {
 	}//logining
 	
 	public function safe(){
+		if(!$this->login->auto_login())$this->login->redirect_to_login();
 		$this->system->set_menu_id('safe');
 		$data=array('title'=>'安全设置',
 					'meta'=>array(),
@@ -126,6 +127,7 @@ class user extends CI_Controller {
 		$this->load->view('user/template/footer');
 	}
 	public function active(){
+		if(!$this->login->auto_login())$this->login->redirect_to_login();
 		$this->system->set_menu_id('safe','active');
 		$data=array('title'=>'账户激活',
 					'meta'=>array(),
