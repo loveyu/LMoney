@@ -17,6 +17,7 @@ if ( ! function_exists('get_user_avata'))
 	}
 }
 
+
 if ( ! function_exists('get_user_name'))
 {
 	function get_user_name($begin='',$end='')
@@ -64,11 +65,27 @@ if ( ! function_exists('get_user_email'))
 	}
 }
 
+if ( ! function_exists('get_user_id'))
+{
+	function get_user_id()
+	{
+		return get_instance()->login->user_info->id;
+	}
+}
+
 if ( ! function_exists('is_login'))
 {
 	function is_login()
 	{
 		return get_instance()->login->is_login;
+	}
+}
+
+if ( ! function_exists('get_user_active'))
+{
+	function get_user_active()
+	{
+		return get_instance()->login->user_info->active=='TRUE';
 	}
 }
 
