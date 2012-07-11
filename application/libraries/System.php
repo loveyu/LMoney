@@ -21,6 +21,28 @@ class System{
 		foreach($t as $v)$this->db_config[$v['name']]=$v;
 		unset($v);
 	}
+	public function get_email_config(){
+		$this->CI->db->where('name','email');
+		$this->CI->db->select('value');
+		$t=explode(';',$this->CI->db->get('setting')->row()->value);
+		$y=array();
+		foreach($t as $v){
+			$n=strpos($v,':');
+			$y[substr($v,0,$n)]=substr($v,$n+1);
+		}
+		return $y;
+	}
+	public function get_email_send(){
+		$this->CI->db->where('name','email_send_info');
+		$this->CI->db->select('value');
+		$t=explode(';',$this->CI->db->get('setting')->row()->value);
+		$y=array();
+		foreach($t as $v){
+			$n=strpos($v,':');
+			$y[substr($v,0,$n)]=substr($v,$n+1);
+		}
+		return $y;
+	}
 	public function get_sitename(){
 		return $this->db_config['sitename']['value'];
 	}

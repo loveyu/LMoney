@@ -57,8 +57,8 @@ class user extends CI_Controller {
 			$this->register->get_register_info();
 			$this->form_validation->set_rules('register[user]', '用户名', 'required|min_length[4]|max_length[18]');
 			$this->form_validation->set_rules('register[email]', '邮箱', 'required|valid_email');
-			$this->form_validation->set_rules('register[password]', '密码', 'required|min_length[6]|max_length[16]');
-			$this->form_validation->set_rules('register[confirm]', '确认密码', 'required|min_length[6]|max_length[16]');
+			$this->form_validation->set_rules('register[password]', '密码', 'required|min_length[6]|max_length[32]');
+			$this->form_validation->set_rules('register[confirm]', '确认密码', 'required|min_length[6]|max_length[32]');
 			$this->form_validation->set_rules('register[verification]', '验证码', 'required');
 			$this->form_validation->set_rules('register[agreement]', '同意网站协议', 'required');
 			
@@ -91,7 +91,7 @@ class user extends CI_Controller {
 		else
 		{
 			$this->form_validation->set_message('valid_email','%s 不正确');	
-			$this->form_validation->set_rules('login[passwd]', '密码', 'alpha_dash|min_length[6]|max_length[16]');
+			$this->form_validation->set_rules('login[passwd]', '密码', 'alpha_dash|min_length[6]|max_length[32]');
 			if(!$this->form_validation->run())
 			{
 				$this->load->view('user/login',$data);	
@@ -127,6 +127,7 @@ class user extends CI_Controller {
 		$this->load->view('user/template/footer');
 	}
 	public function active($act='',$code=''){
+		$this->load->library(array('Mail','Safe'));
 		if(!$this->login->auto_login())$this->login->redirect_to_login();
 		$this->system->set_menu_id('safe','active');
 		$data=array('title'=>'账户激活',
@@ -140,14 +141,40 @@ class user extends CI_Controller {
 		);
 		if($act=='send_mail')
 		{
-			$data['mail_sent']=FALSE;
+			$data['mail_sent']=$this->safe->active_mail();
 		}else if($act=='V' && $code!=''){
-			$data['verification']=TRUE;
+			$data['verification']=$this->safe->verification($code);
 		}
 		$this->load->view('user/template/header',$data);
 		$this->load->view('user/template/menu');
 		$this->load->view('user/active');
 		$this->load->view('user/template/footer');
-	}	
+	}
+	public function email($post=''){
+		$this->load->library(array('Mail','Safe'));
+		if(!$this->login->auto_login())$this->login->redirect_to_login();
+		$this->system->set_menu_id('safe','email');
+		$data=array('title'=>'修改邮箱地址',
+			'meta'=>array(),
+			'link_tag'=>array(
+							array('href' => 'css/user/safe.css',
+									'rel' => 'stylesheet',
+									'type' => 'text/css'
+									)
+							)
+		);
+		if($post=='post'){
+			//存在数据提交，检验数据
+			
+		}else if($post=='send_mail'){
+			//发送验证邮件
+			
+			exit;
+		}
+		$this->load->view('user/template/header',$data);
+		$this->load->view('user/template/menu');
+		$this->load->view('user/edit_email');
+		$this->load->view('user/template/footer');
+	}
 }
 ?>

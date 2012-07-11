@@ -49,5 +49,18 @@ class func extends CI_Controller {
 		ImagePNG($im);
 		ImageDestroy($im);
 	}
+	public function CheckAccount($type=''){
+		$this->load->database();
+		$value=$this->input->get('v');
+		switch($type){
+			case 'email':
+				$this->db->where('email', $value); 
+				$this->db->from('user');
+				if($this->db->count_all_results()==0)die('TRUE');
+				else die('FALSE');
+			break;
+		}
+		die('FALSE');
+	}
 }
 ?>
