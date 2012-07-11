@@ -105,3 +105,8 @@
 	margin:20px auto 5px 30px;
 	padding:5px;
 }
+
+.err_notice{
+	color:#F00;
+	text-align:left;
+}
