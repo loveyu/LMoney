@@ -45,7 +45,7 @@ echo $this->register->register_errors('<p class="register_error">', '</p>');
 		user=document.getElementById('register_user').value;
 		var v='';
 		if(user.length==0)v='不能为空';
-		else if(user.length<4)v='长度不能小于4';
+		else if(user.length<2)v='长度不能小于2';
 		else if(user.length>18)v='长度不能大于18';
 		document.getElementById('user_notice').innerHTML=v;
 		
@@ -75,7 +75,7 @@ echo $this->register->register_errors('<p class="register_error">', '</p>');
 		pwd_c=document.getElementById('register_confirm').value;
 		v=document.getElementById('register_verification').value;
 		agr=document.getElementById('register_agreement').checked;
-		if(user.length<4 || user.length>18)err+='用户名必须在4到18个字符间\n';
+		if(user.length<2 || user.length>18)err+='用户名必须2到18个字符间\n';
 		if(email=='')err+='邮箱不能为空\n';
 		else if(!isEmail(email))err+='这不是一个正确的邮箱\n';
 		if(pwd.length<6 || pwd.length>32)err+='密码必须为6到32个字符\n';
