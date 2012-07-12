@@ -31,7 +31,7 @@ if($verification):?>
 
 <?php endif;else:?>
 <p>您的账户当前未激活，请使用邮箱激活</p>
-<table>
+<table align="center" cellspacing="3">
 <tbody>
 <tr><th>邮箱:</th><td><?=get_user_email()?>&nbsp;<span><a href="<?=site_url("user/email")?>">修改邮箱</a></span></td></tr>
 <tr><th></th><td><a href="<?=site_url("user/active/send_mail")?>" class="act">激活</a></td></tr>
