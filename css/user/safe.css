@@ -64,3 +64,91 @@
 	border: 1px solid #003;
 	padding:5px;
 }
+
+#edit_email table{
+	margin:5px auto 20px auto;
+	padding:2px;
+}
+
+#edit_email th{
+	font-size:18px;
+	color:#099;
+	text-align:right;
+}
+#edit_email td{
+	font-size:19px;
+	color:#933;
+	text-align:left;
+}
+#edit_email input{
+	width:220px;
+	height:24px;
+	font-size:18px;
+	margin:2px 0px 2px 10px;
+	padding:2px;
+	background-color:#FCEBFE;
+	border: 1px dashed #AB5821;
+}
+#edit_email #status{
+	font-size:14px;
+	text-align:center;
+	color:#F00;
+}
+#edit_email button{
+	font-size:18px;
+	background-color:#DFEDD3;
+	border:1px solid #D3C8FB;
+	padding:2px;
+	color:#C03;
+}
+#edit_email .submit{
+	margin-left:25px;
+}
+#edit_password h2{
+	text-align:center;
+	font-size:24px;
+	color:#582E92;
+	margin-bottom:15px;
+}
+#edit_password table{
+	width:400px;
+	margin:0px auto 0px auto;
+}
+#edit_password table th{
+	font-size:15px;
+	color:#966;
+	width:60px;
+}
+#edit_password input {
+	width:220px;
+	height:24px;
+	font-size:18px;
+	margin:2px 0px 2px 10px;
+	padding:2px;
+	background-color:#FCEBFE;
+	border: 1px dashed #AB5821;	
+}
+#edit_password .submit{
+	border:1px solid #0C9;
+	background-color:#E8E8FF;
+	color:#339;
+	font-size:16px;
+	margin-top:10px;
+	padding:5px;
+}
+#edit_password p{
+	font-size:18px;
+	color:blue;
+	text-align:center;
+}
+
+#edit_password .error{
+	font-size:15px;
+	color:#F00;
+	border:1px dotted #000;
+	background-color:#FFFEFD;
+	padding:3px;
+}
+#edit_password .notic_error{
+	color:#F00;	
+}

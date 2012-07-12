@@ -151,7 +151,7 @@ class user extends CI_Controller {
 		$this->load->view('user/template/footer');
 	}
 	public function email($post=''){
-		$this->load->library(array('Mail','Safe'));
+		$this->load->library(array('Mail','Safe','form_validation'));
 		if(!$this->login->auto_login())$this->login->redirect_to_login();
 		$this->system->set_menu_id('safe','email');
 		$data=array('title'=>'修改邮箱地址',
@@ -161,19 +161,52 @@ class user extends CI_Controller {
 									'rel' => 'stylesheet',
 									'type' => 'text/css'
 									)
-							)
+							),
+			'status'=>false
 		);
 		if($post=='post'){
 			//存在数据提交，检验数据
-			
+			$this->form_validation->set_rules('new_email', '新地址', 'required|valid_email');
+			$this->form_validation->set_rules('v_code', '验证码', 'required|min_length[10]|max_length[10]');
+			if($this->form_validation->run()){
+				$data['status']=$this->safe->post_edit_email();
+			}
 		}else if($post=='send_mail'){
 			//发送验证邮件
-			
+			$this->safe->send_edit_code();
 			exit;
 		}
 		$this->load->view('user/template/header',$data);
 		$this->load->view('user/template/menu');
 		$this->load->view('user/edit_email');
+		$this->load->view('user/template/footer');
+	}
+	public function password($act=''){
+		if(!$this->login->auto_login())$this->login->redirect_to_login();
+		$this->load->library(array('Mail','Safe','form_validation','session'));
+		$this->system->set_menu_id('password','password');
+		$data=array('title'=>'修改登录密码',
+			'meta'=>array(),
+			'link_tag'=>array(
+							array('href' => 'css/user/safe.css',
+									'rel' => 'stylesheet',
+									'type' => 'text/css'
+									)
+							),
+			'status'=>false
+		);
+		if($act=='post'){
+			$this->form_validation->set_rules('password[old]', '旧密码', 'required|min_length[6]|max_length[32]');
+			$this->form_validation->set_rules('password[new]', '新密码', 'required|min_length[6]|max_length[32]');
+			$this->form_validation->set_rules('password[confirm]', '确认密码', 'required|min_length[6]|max_length[32]');
+			$this->form_validation->set_rules('password[v]', '验证码', 'required|min_length[4]|max_length[4]');
+			if($this->form_validation->run()){
+				$data['status']=$this->safe->edit_password();
+			}
+		}
+		$this->load->view('user/template/header',$data);
+		$this->load->view('user/template/menu');
+		$this->load->view('user/edit_password');
 		$this->load->view('user/template/footer');
 	}
 }
