@@ -28,7 +28,7 @@ class Mail{
 <div style="background-color:#ACEFFD;padding:20px;">
 <p>'.$s['user'].' 你好:</p>
 <p>请点击此链接激活你的账户:<a href="'.site_url('user/active/V/'.$s['key']).'" target="_blank">'.site_url('user/active/V/'.$s['key']).'</a></p>
-<p>请在48小时内有效</p>
+<p>48小时内有效</p>
 </div>
 </html>
 			');
@@ -40,6 +40,30 @@ class Mail{
 		}
 		return $flag;
 	}
+	public function send_edit_mail($s=array('user'=>'','email'=>'','key'=>'')){
+		$flag=false;
+		try {
+			$this->mail->AddReplyTo($this->send['from'],$this->send['name']);
+			$this->mail->AddAddress($s['email'],$s['user']);
+			$this->mail->SetFrom($this->send['from'],$this->send['name']);
+			$this->mail->Subject = '用户信息修改请求码 - '.$this->CI->system->get_sitename();
+			$this->mail->MsgHTML('
+<html>
+<div style="background-color:#ACEFFD;padding:20px;">
+<p>'.$s['user'].' 你好:</p>
+<p>请求码为:&nbsp;'.$s['key'].'&nbsp;</p>
+<p>2小时内有效</p>
+</div>
+</html>
+			');
+			if($this->mail->Send())$flag=true;
+		} catch (phpmailerException $e) {
+			//echo $e->errorMessage(); //Pretty error messages from PHPMailer
+		} catch (Exception $e) {
+			//echo $e->getMessage(); //Boring error messages from anything else!
+		}
+		return $flag;
+	}	
 	private function set_config($config){
 		foreach($config as $n => $v){
 			switch($n){
