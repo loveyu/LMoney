@@ -6,9 +6,11 @@
 class Safe{
 	private $CI;
 	public $error;
+	private  $PIN;
 	function __construct(){
 		$this->CI=& get_instance();
 		$this->error=array();
+		$this->PIN='';
 	}
 	public function active_mail(){
 		if(get_user_active()){
@@ -16,7 +18,18 @@ class Safe{
 			return FALSE;
 		}
 		else return $this->CI->mail->send_active_mail(array('user'=>get_user_name(),'email'=>get_user_email(true),'key'=>$this->get_new_active_key(get_user_id())));
-	} 
+	}
+	public function get_PIN($type=''){
+		if($type=='' && $this->PIN==''){
+			$this->CI->db->where('id', get_user_id());
+			$this->CI->db->select(array('PIN','HPIN'));
+			$this->PIN=$this->CI->db->get('user')->row();
+		}
+		if($this->PIN=='')return '';
+		if($type=='PIN')return $this->PIN->PIN;
+		if($type=='HPIN')return $this->PIN->HPIN;
+		
+	}
 	private function get_new_active_key($id){
 		$new_key=$this->rand_new_key();
 		$this->CI->db->where('id', $id);
@@ -52,6 +65,34 @@ class Safe{
 		$this->CI->db->where('id', get_user_id());
 		$this->CI->db->update('aq', array('edit_code'=>$code,'edit_time'=>date('Y-m-d H:i:s')));
 		$this->CI->mail->send_edit_mail(array('user'=>get_user_name(),'email'=>get_user_email(true),'key'=>$code));
+	}
+	public function creat_PIN($type="PIN"){
+		$post=$this->CI->input->get_post('pwd');
+		if($post['new']!=$post['confirm']){
+			array_push($this->error,"两次密码不一致");
+			return FALSE;
+		}
+		$this->CI->db->where('id', get_user_id());
+		$this->CI->db->update('user', array($type=>make_password($post['new'])));
+		return TRUE;
+	}
+	public function edit_PIN($type="PIN"){
+		$post=$this->CI->input->get_post('pwd');
+		if($post['new']!=$post['confirm']){
+			array_push($this->error,"两次密码不一致");
+			return FALSE;
+		}
+		if($post['new']==$post['old']){
+			array_push($this->error,"新旧密码一致，无需修改");
+			return FALSE;
+		}
+		if(make_password($post['old'])!=$this->get_PIN($type)){
+			array_push($this->error,"密码不正确");
+			return FALSE;
+		}
+		$this->CI->db->where('id', get_user_id());
+		$this->CI->db->update('user', array($type=>make_password($post['new'])));		
+		return TRUE;
 	}
 	public function post_edit_email(){
 		$email=$this->CI->input->get_post('new_email');
@@ -98,6 +139,16 @@ class Safe{
 		$this->CI->db->update('user', array('password'=>make_password($post['new'])));
 		$this->CI->login->register_login(get_user_email(true),md5($post['new']));		
 		return TRUE;
+	}
+	public function edit_username(){
+		$name=$this->CI->input->get_post('new_name');
+		if($name==get_user_name()){
+			array_push($this->error,"无需修改");
+			return false;
+		}
+		$this->CI->db->where('id', get_user_id());
+		$this->CI->db->update('user', array('user'=>$name));
+		return true;
 	}
 	private function rand_new_key($length=32){
 		$pattern='0123456789qwertyuiopasdfghjklzxcvbnmMNBVCXZLKJHGFDSAPOIUYTREWQ';

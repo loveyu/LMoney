@@ -55,7 +55,7 @@ class user extends CI_Controller {
 		if($this->input->post() && !$data['close'])
 		{
 			$this->register->get_register_info();
-			$this->form_validation->set_rules('register[user]', '用户名', 'required|min_length[4]|max_length[18]');
+			$this->form_validation->set_rules('register[user]', '用户名', 'required|min_length[2]|max_length[18]');
 			$this->form_validation->set_rules('register[email]', '邮箱', 'required|valid_email');
 			$this->form_validation->set_rules('register[password]', '密码', 'required|min_length[6]|max_length[32]');
 			$this->form_validation->set_rules('register[confirm]', '确认密码', 'required|min_length[6]|max_length[32]');
@@ -183,7 +183,7 @@ class user extends CI_Controller {
 	}
 	public function password($act=''){
 		if(!$this->login->auto_login())$this->login->redirect_to_login();
-		$this->load->library(array('Mail','Safe','form_validation','session'));
+		$this->load->library(array('Safe','form_validation','session'));
 		$this->system->set_menu_id('password','password');
 		$data=array('title'=>'修改登录密码',
 			'meta'=>array(),
@@ -208,6 +208,94 @@ class user extends CI_Controller {
 		$this->load->view('user/template/menu');
 		$this->load->view('user/edit_password');
 		$this->load->view('user/template/footer');
+	}
+	public function PIN($act=''){
+		if(!$this->login->auto_login())$this->login->redirect_to_login();
+		$this->load->library(array('Safe','form_validation'));
+		$this->system->set_menu_id('password','PIN');
+		$data=array('title'=>'修改PIN密码',
+			'meta'=>array(),
+			'link_tag'=>array(
+							array('href' => 'css/user/safe.css',
+									'rel' => 'stylesheet',
+									'type' => 'text/css'
+									)
+							),
+			'status'=>false,
+			'type'=>'edit'
+		);
+		$this->safe->get_PIN();//获取PIN
+		if($this->safe->get_PIN('PIN')=='')$data['type']='creat';
+		if($act!=''){
+			$this->form_validation->set_rules('pwd[new]', '新的密码', 'required|min_length[6]|max_length[32]');
+			$this->form_validation->set_rules('pwd[confirm]', '确认密码', 'required|min_length[6]|max_length[32]');
+		}
+		if($act=='creat'){
+			if($this->form_validation->run())$data['status']=$this->safe->creat_PIN('PIN');
+		}else if($act=='edit'){
+			$this->form_validation->set_rules('pwd[confirm]', '确认密码', 'required|min_length[6]|max_length[32]');
+			if($this->form_validation->run())$data['status']=$this->safe->edit_PIN('PIN');
+		}
+		$this->load->view('user/template/header',$data);
+		$this->load->view('user/template/menu');
+		$this->load->view('user/edit_PIN');
+		$this->load->view('user/template/footer');
+	}
+	public function HPIN($act=''){
+		if(!$this->login->auto_login())$this->login->redirect_to_login();
+		$this->load->library(array('Safe','form_validation'));
+		$this->system->set_menu_id('password','HPIN');
+		$data=array('title'=>'修改登录记录查看密码',
+			'meta'=>array(),
+			'link_tag'=>array(
+							array('href' => 'css/user/safe.css',
+									'rel' => 'stylesheet',
+									'type' => 'text/css'
+									)
+							),
+			'status'=>false,
+			'type'=>'edit'
+		);
+		$this->safe->get_PIN();//获取PIN
+		if($this->safe->get_PIN('HPIN')=='')$data['type']='creat';
+		if($act!=''){
+			$this->form_validation->set_rules('pwd[new]', '新的密码', 'required|min_length[6]|max_length[32]');
+			$this->form_validation->set_rules('pwd[confirm]', '确认密码', 'required|min_length[6]|max_length[32]');
+		}
+		if($act=='creat'){
+			if($this->form_validation->run())$data['status']=$this->safe->creat_PIN('HPIN');
+		}else if($act=='edit'){
+			$this->form_validation->set_rules('pwd[confirm]', '确认密码', 'required|min_length[6]|max_length[32]');
+			if($this->form_validation->run())$data['status']=$this->safe->edit_PIN('HPIN');
+		}
+		$this->load->view('user/template/header',$data);
+		$this->load->view('user/template/menu');
+		$this->load->view('user/edit_HPIN');
+		$this->load->view('user/template/footer');
+	}
+	public function profile($act=''){
+		if(!$this->login->auto_login())$this->login->redirect_to_login();
+		$this->load->library(array('Safe','form_validation'));
+		$this->system->set_menu_id('profile');
+		$this->safe->get_PIN();//获取PIN
+		$data=array('title'=>'个人信息',
+			'meta'=>array(),
+			'link_tag'=>array(
+							array('href' => 'css/user/profile.css',
+									'rel' => 'stylesheet',
+									'type' => 'text/css'
+									)
+							),
+			'status'=>false
+		);
+		if($act=='edit_name'){
+			$this->form_validation->set_rules('new_name', '用户名', 'required|min_length[2]|max_length[18]');
+			if($this->form_validation->run())$data['status']=$this->safe->edit_username();
+		}
+		$this->load->view('user/template/header',$data);
+		$this->load->view('user/template/menu');
+		$this->load->view('user/profile');
+		$this->load->view('user/template/footer');		
 	}
 }
 ?>

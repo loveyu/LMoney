@@ -4,7 +4,7 @@
 
 <p>安全状态良好...</p>
 
-</div>
-</div>
+</div><!-- safe-page -->
+</div><!-- safe-->
 <div class="clear"></div>
 

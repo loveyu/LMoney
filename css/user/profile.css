@@ -1,0 +1,53 @@
+/* CSS Document */
+
+#profile{
+
+}
+#profile table{
+	width:600px;
+	margin:20px auto 30px auto;
+}
+#profile table td,#profile table th{
+	padding:5px;
+}
+#profile input{
+	width:280px;
+	height:20px;
+	font-size:17px;
+	margin:-2px 0px -2px 10px;
+	padding:2px;
+	background-color:#ECFCFD;
+	border: 1px dashed #188689;
+}
+#profile #edit_avata{
+	text-align:center;
+}
+#profile .avata{
+	margin-left:10px;
+	border:1px dotted #006;
+	width:50px;
+	height:50px;
+}
+#profile .edit{
+	background-color:#ECEEE3;
+	border:1px solid #333;
+	font-size:16px;
+	padding:3px;
+}
+#profile span{
+	margin-left:10px;
+}
+#profile .submit{
+	color:#03C;
+	padding:2px;
+	font-size:15px;
+	font-weight: bold;
+}
+#profile #err_notice{
+	color:#F00;
+	font-style:italic;
+}
+#profile .error{
+	padding-left:10px;
+	color:#F00;
+}

@@ -117,7 +117,7 @@
 #edit_password table th{
 	font-size:15px;
 	color:#966;
-	width:60px;
+	width:100px;
 }
 #edit_password input {
 	width:220px;
@@ -151,4 +151,11 @@
 }
 #edit_password .notic_error{
 	color:#F00;	
+}
+#edit_password .table_notice{
+	font-size:14px;
+	color:#06F;
+	border:1px solid #990;
+	padding:3px;
+	text-align:center;
 }
