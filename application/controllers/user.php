@@ -7,15 +7,9 @@ class user extends CI_Controller {
 		$this->load->library(array('system','encrypt','login'));
 		$this->load->helper(array('cookie','url','html','form','password','template'));
 	}
-	public function index()
+	public function index($act='')
 	{
-		if(!$this->login->auto_login())$this->login->redirect_to_login();
-		$this->system->set_menu_id('index');
-		$data=array('title'=>'用户','meta'=>array(),'link_tag'=>array());
-		$this->load->view('user/template/header',$data);
-		$this->load->view('user/template/menu');
-		$this->load->view('user/index');
-		$this->load->view('user/template/footer');
+		$this->profile($act);
 	}
 	public function profiles($id=NULL){
 		echo $id;	
@@ -111,6 +105,7 @@ class user extends CI_Controller {
 	
 	public function safe(){
 		if(!$this->login->auto_login())$this->login->redirect_to_login();
+		$this->load->library('Safe');
 		$this->system->set_menu_id('safe');
 		$data=array('title'=>'安全设置',
 					'meta'=>array(),
@@ -121,6 +116,7 @@ class user extends CI_Controller {
 											)
 									)
 					);
+		$this->safe->get_PIN();//获取PIN
 		$this->load->view('user/template/header',$data);
 		$this->load->view('user/template/menu');
 		$this->load->view('user/safe');

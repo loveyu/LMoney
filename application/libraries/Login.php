@@ -67,7 +67,7 @@ class Login{
 	public function logout(){
 		delete_cookie('lg_sid');
 		delete_cookie('lg_status');
-		redirect(base_url('/login.html?loggedout=true'), 'refresh');
+		redirect(site_url('/login.html?loggedout=true'), 'refresh');
 	}
 	public function clear_login_table(){
 		delete_cookie('lg_table');

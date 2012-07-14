@@ -38,6 +38,14 @@
 	padding:20px 0px 20px 0px;
 }
 
+#check_index p{
+	padding:8px;
+	margin:3px;
+	background-color:#DDD3FC;
+	color:#906;
+	font-size:17px;
+}
+
 #active {
 	margin:5px;
 }
