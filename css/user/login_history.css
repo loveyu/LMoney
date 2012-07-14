@@ -1,0 +1,124 @@
+/* CSS Document */
+
+#login {
+	margin:20px;
+	padding:5px;
+}
+#login ul{
+	width:320px;
+	margin:2px auto 2px auto;
+	list-style-type:none;
+	padding:5px;
+	border:1px solid #96E2F5;
+	background-color:#F5E9D1;
+}
+#login li{
+	padding:2px;
+	margin:5px auto 5px 15px;
+}
+#login .error{
+	color:#F00;
+	margin-left:-2px;
+	padding-left:15px;
+	border:1px solid #9C0;
+}
+#login .logout{
+	color:#00F;
+	margin-left:-2px;
+	padding-left:15px;
+	border:1px solid #9C0;
+}
+#login input{
+	width:220px;
+	padding:2px;
+	height:22px;
+	font-size:18px;
+}
+#login button{
+	padding:2px;
+	font-size:15px;
+}
+
+#history{
+	margin:20px auto 10px auto;
+	background-color:#DBAFEB;
+	padding:5px;
+}
+#search_list{
+	margin:5px;
+	padding:10px;
+	border:1px solid #D978E7;
+}
+#search_list ul{
+	list-style-type:none;
+	overflow:hidden;
+}
+#search_list li{
+	margin-left:20px;
+	float:left;
+}
+
+#result_table {
+	margin:5px;
+}
+
+#result_table table{
+	width:100%;
+	text-align:center;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #F60;
+	border-bottom-color: #F60;
+	border-left-color: #F60;
+}
+#result_table table th{
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #F60;
+	padding:5px;
+}
+#result_table table td{
+	padding:5px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #F60;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #F60;
+}
+#page_nv{
+	margin:20px 5px 5px 5px;
+	border:1px solid #278EE2;
+}
+#page_nv p{
+	margin:5px;
+	padding:10px;
+	text-align:center;
+}
+#page_nv a{
+	border:1px dotted #F36;
+	padding:4px 10px 4px 10px;
+	font-size:18px;
+	margin:5px;
+}
+#page_nv .now{
+	border:2px solid #966;
+	font-size:20px;
+	color:#00F;
+}
+#page_nv .up{
+	border:2px solid #F66;
+	font-size:18px;
+	color:#9B59E3;
+	font-style:italic;
+}
+#page_nv .down{
+	border:2px solid #F66;
+	font-size:18px;
+	color:#9B59E3;
+	font-style:italic;
+}
