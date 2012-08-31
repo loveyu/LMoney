@@ -293,5 +293,44 @@ class user extends CI_Controller {
 		$this->load->view('user/profile');
 		$this->load->view('user/template/footer');		
 	}
+	public function forget_account(){
+		if($this->login->auto_login())redirect($this->login->redirect_to, 'refresh');
+		
+        
+		$this->load->library(array('ForgetAccount','Mail','form_validation','session'));
+		$data=array(
+					'title' => '找回密码',
+					'meta' => array(),
+					'link_tag' => array(
+									array('href' => 'css/user/forget_account.css','rel' => 'stylesheet','type' => 'text/css')
+									),
+					'status' => false,
+					'send' => false,
+				);
+		if($this->input->get('next')=='')
+		{
+			$data['status'] = true;
+			$this->form_validation->set_rules('email', '邮箱', 'required|valid_email');
+			$this->form_validation->set_rules('v', '验证码', 'required');
+			
+			if($this->form_validation->run() && $this->forgetaccount->check_post())
+			{
+				$data['send'] = $this->forgetaccount->send_mail();
+			}
+		}else if($this->input->get('next')==2){
+			$data['key'] = $this->forgetaccount->check_get();
+			$this->form_validation->set_rules('new', '新的密码', 'required|min_length[6]|max_length[32]');
+			$this->form_validation->set_rules('confirm','确认密码', 'required|min_length[6]|max_length[32]');
+			if($this->form_validation->run() && $this->forgetaccount->check_new_password()){
+				if($this->forgetaccount->new_password()){
+					$data['status'] = true;
+				}
+			}		
+		}
+		
+		$this->load->view('user/template/header',$data);
+		$this->load->view('user/forget_account');
+		$this->load->view('user/template/footer');
+	}
 }
 ?>

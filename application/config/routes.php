@@ -42,6 +42,7 @@ $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 $route['login.html'] = "user/login";
 $route['register.html'] = "user/register";
+$route['forget_account.html'] = "user/forget_account";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

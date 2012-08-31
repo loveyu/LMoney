@@ -63,7 +63,32 @@ class Mail{
 			//echo $e->getMessage(); //Boring error messages from anything else!
 		}
 		return $flag;
-	}	
+	}
+	public function send_forget_account_mail($s=array('user'=>'','email'=>'','key'=>'')){
+		$flag=false;
+		try {
+			$this->mail->AddReplyTo($this->send['from'],$this->send['name']);
+			$this->mail->AddAddress($s['email'],$s['user']);
+			$this->mail->SetFrom($this->send['from'],$this->send['name']);
+			$this->mail->Subject = '找回用户密码 - '.$this->CI->system->get_sitename();
+			$this->mail->MsgHTML('
+<html>
+<div style="background-color:#ACEFFD;padding:20px;">
+<p>'.$s['user'].' 你好:</p>
+<p>你请求找回你的密码，你可以通过以下链接到找回密码页面:</p>
+<p><a href="'.site_url('/forget_account.html?next=2&mail='.$s['email'].'&key='.$s['key']).'" target="_blank">'.site_url('/forget_account.html?next=2&mail='.$s['email'].'&key='.$s['key']).'</a></p>
+<p>48小时内有效</p>
+</div>
+</html>
+			');
+			if($this->mail->Send())$flag=true;
+		} catch (phpmailerException $e) {
+			//echo $e->errorMessage(); //Pretty error messages from PHPMailer
+		} catch (Exception $e) {
+			//echo $e->getMessage(); //Boring error messages from anything else!
+		}
+		return $flag;
+	}
 	private function set_config($config){
 		foreach($config as $n => $v){
 			switch($n){

@@ -24,7 +24,7 @@ if ( ! function_exists('get_user_name'))
 	{
 		if(is_login())
 			return $begin.get_instance()->login->user_info->user.$end;
-		else return $begin."&nbsp;未"."<a href=\"".base_url("login.html?redirect=true")."\" class=\"login\">登录</a>!".$end;
+		else return $begin."&nbsp;未"."<a href=\"".base_url("login.html?redirect=true")."\" class=\"login\">登录</a>".$end;
 	}
 }
 

@@ -1,0 +1,54 @@
+/* CSS Document */
+
+#forget_account{
+	width:400px;
+	height:auto;
+	margin:40px auto auto auto;
+	border:#933 thin dotted;
+}
+
+#forget_account h2{
+	text-align:center;
+	padding:10px 20px 10px 20px;
+	background-color:#D5ABE2;
+}
+
+#forget_account form{
+	background-color:#C9F;
+	padding:20px 20px 20px 20px;
+}
+#forget_account input{
+	width:99%;
+	height:25px;
+	background-color:#D5CDE7;
+	border:#D5CDE7 thin solid;
+}
+#forget_account img{
+	width:70px;
+	height:100%;
+}
+#forget_account button{
+	font-size:15px;
+	margin-bottom:10px;
+	margin-top:10px;
+	padding:3px;
+}
+#forget_account .error{
+	color:#F00;
+	text-align:center;
+	background-color:#E4A7E4;
+	padding:3px;
+}
+#forget_account .succ{
+	color:#00F;
+	text-align:center;
+	background-color:#CCE3D5;
+	padding:3px;
+}
+#forget_account .succ_find{
+	color:#00F;
+	text-align:center;
+	background-color:#CCE3D5;
+	padding:10px;
+	border:solid #C6F thin;
+}

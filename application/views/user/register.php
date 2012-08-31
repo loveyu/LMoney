@@ -19,7 +19,7 @@ echo $this->register->register_errors('<p class="register_error">', '</p>');
 <tr><th><label for="register_email">邮&nbsp;&nbsp;&nbsp;&nbsp;箱</label></th><td><input name="register[email]" id="register_email" value="<?=set_value('register[email]')?>" type="text" onblur="V_email();"/></td><td id="email_notice" class="err_notice"></td></tr>
 <tr><th><label for="register_password">密&nbsp;&nbsp;&nbsp;&nbsp;码</label></th><td><input name="register[password]" id="register_password" type="password" onBlur="V_pwd();" /></td><td id="pwd_notice" class="err_notice"></td></tr>
 <tr><th><label for="register_confirm">确认密码</label></th><td><input id="register_confirm" name="register[confirm]" type="password" onBlur="V_pwd_c();"/></td><td id="pwd_c_notice" class="err_notice"></td></tr>
-<tr><th><label for="register_verification">验&nbsp;证&nbsp;码</label></th><td><input name="register[verification]" id="register_verification" type="text" /></td><td><img src="<?php echo base_url('func/verification_code');?>" align="absmiddle" onclick="this.src='<?php echo base_url('func/verification_code');?>?'+Math.random();" title="点击刷新"></td></tr>
+<tr><th><label for="register_verification">验&nbsp;证&nbsp;码</label></th><td><input name="register[verification]" id="register_verification" type="text" /></td><td><img src="<?php echo site_url('func/verification_code');?>" align="absmiddle" onclick="this.src='<?php echo base_url('func/verification_code');?>?'+Math.random();" title="点击刷新"></td></tr>
 </tbody>
 </table>
 
